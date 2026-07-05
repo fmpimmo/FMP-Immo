@@ -113,131 +113,131 @@ main{max-width:860px;margin:0 auto;padding:14px 12px 80px}
 </head>
 <body>
 <header>
-  <div><div class="logo">FMP Immo</div></div>
-  <h1>Dégâts Locatifs</h1>
-  <div class="hpills">
-    <button class="hpill on" onclick="goTo(0)">① Bien</button>
-    <button class="hpill" onclick="goTo(1)">② Dégâts</button>
-    <button class="hpill" onclick="goTo(2)">③ Signatures</button>
-    <button class="hpill" onclick="goTo(3)">④ Document</button>
-  </div>
+<div><div class="logo">FMP Immo</div></div>
+<h1>Dégâts Locatifs</h1>
+<div class="hpills">
+  <button class="hpill on" onclick="goTo(0)">① Bien</button>
+  <button class="hpill" onclick="goTo(1)">② Dégâts</button>
+  <button class="hpill" onclick="goTo(2)">③ Signatures</button>
+  <button class="hpill" onclick="goTo(3)">④ Document</button>
+</div>
 </header>
 <main>
 
 <!-- ① BIEN -->
 <div class="step on" id="s0">
-  <div class="card"><div class="card-h">📍 Bien immobilier</div><div class="card-b">
-    <div class="g1"><div class="field"><label>Adresse du bien</label>
-      <input type="text" id="adresse" placeholder="Rue Alfred Lanser 1 bte 8, 6230 Pont-à-Celles"/></div></div>
-  </div></div>
-  <div class="card"><div class="card-h">👥 Parties</div><div class="card-b">
-    <div class="g2" style="margin-bottom:12px">
-      <div class="field"><label>Bailleur / Propriétaire</label><input type="text" id="bailleur" placeholder="Nom du bailleur"/></div>
-      <div class="field"><label>Mandataire</label><input type="text" id="mandataire" placeholder="FMP Immo srl"/></div>
-    </div>
-    <div class="g2">
-      <div class="field"><label>Locataire(s)</label><input type="text" id="locataire" placeholder="Prénom Nom"/></div>
-      <div class="field"><label>Agent / Expert</label><input type="text" id="expert" placeholder="Nom de l'expert"/></div>
-    </div>
-  </div></div>
-  <div class="card"><div class="card-h">📅 Période</div><div class="card-b">
-    <div class="g3" style="margin-bottom:12px">
-      <div class="field"><label>Date entrée</label><input type="date" id="d-entree" oninput="calcDuree()"/></div>
-      <div class="field"><label>Date sortie</label><input type="date" id="d-sortie" oninput="calcDuree()"/></div>
-      <div class="field"><label>Durée (règle wallonne)</label>
-        <div class="dur" id="dur-badge">—<small>toute année commencée = 1 an</small></div></div>
-    </div>
-    <div class="g2">
-      <div class="field"><label>Référence PV entrée</label><input type="text" id="ref-edl" placeholder="VALENV-IMMO – 13/04/2024"/></div>
-      <div class="field"><label>Lieu de signature</label><input type="text" id="lieu" placeholder="Charleroi"/></div>
-    </div>
-  </div></div>
-  <div class="navbot"><span></span><button class="btn btn-navy" onclick="goTo(1)">Encoder les dégâts →</button></div>
+<div class="card"><div class="card-h">📍 Bien immobilier</div><div class="card-b">
+  <div class="g1"><div class="field"><label>Adresse du bien</label>
+    <input type="text" id="adresse" placeholder="Rue Alfred Lanser 1 bte 8, 6230 Pont-à-Celles"/></div></div>
+</div></div>
+<div class="card"><div class="card-h">👥 Parties</div><div class="card-b">
+  <div class="g2" style="margin-bottom:12px">
+    <div class="field"><label>Bailleur / Propriétaire</label><input type="text" id="bailleur" placeholder="Nom du bailleur"/></div>
+    <div class="field"><label>Mandataire</label><input type="text" id="mandataire" placeholder="FMP Immo srl"/></div>
+  </div>
+  <div class="g2">
+    <div class="field"><label>Locataire(s)</label><input type="text" id="locataire" placeholder="Prénom Nom"/></div>
+    <div class="field"><label>Agent / Expert</label><input type="text" id="expert" placeholder="Nom de l'expert"/></div>
+  </div>
+</div></div>
+<div class="card"><div class="card-h">📅 Période</div><div class="card-b">
+  <div class="g3" style="margin-bottom:12px">
+    <div class="field"><label>Date entrée</label><input type="date" id="d-entree" oninput="calcDuree()"/></div>
+    <div class="field"><label>Date sortie</label><input type="date" id="d-sortie" oninput="calcDuree()"/></div>
+    <div class="field"><label>Durée (règle wallonne)</label>
+      <div class="dur" id="dur-badge">—<small>toute année commencée = 1 an</small></div></div>
+  </div>
+  <div class="g2">
+    <div class="field"><label>Référence PV entrée</label><input type="text" id="ref-edl" placeholder="VALENV-IMMO – 13/04/2024"/></div>
+    <div class="field"><label>Lieu de signature</label><input type="text" id="lieu" placeholder="Charleroi"/></div>
+  </div>
+</div></div>
+<div class="navbot"><span></span><button class="btn btn-navy" onclick="goTo(1)">Encoder les dégâts →</button></div>
 </div>
 
 <!-- ② DÉGÂTS -->
 <div class="step" id="s1">
-  <div class="infobox">💡 Appuyez sur <strong>+ Ajouter un dégât</strong> pour encoder. Une fenêtre s'ouvre avec tous les champs.</div>
-  <div class="card"><div class="card-h">🔧 Dégâts constatés</div><div class="card-b" style="padding:12px">
-    <div class="rows" id="rows-list"></div>
-    <button class="add-row" onclick="openEdit(-1)">+ Ajouter un dégât</button>
-  </div></div>
-  <div class="card"><div class="card-h">📊 Récapitulatif</div><div class="card-b">
-    <div class="recap">
-      <div class="rbox rb1"><div class="rl">Total travaux</div><div class="rv" id="r-total">0,00 €</div></div>
-      <div class="rbox rb2"><div class="rl">Part propriétaire</div><div class="rv" id="r-pro">0,00 €</div></div>
-      <div class="rbox rb3"><div class="rl">À retenir locataire</div><div class="rv" id="r-loc">0,00 €</div></div>
-    </div>
-  </div></div>
-  <div class="card"><div class="card-h">📝 Observations</div><div class="card-b">
-    <div class="field"><label>Remarques libres</label>
-      <textarea id="obs" rows="3" placeholder="Remarques, clés remises, observations…"></textarea></div>
-  </div></div>
-  <div class="navbot">
-    <button class="btn btn-out" onclick="goTo(0)">← Retour</button>
-    <button class="btn btn-navy" onclick="goTo(2)">Signatures →</button>
+<div class="infobox">💡 Appuyez sur <strong>+ Ajouter un dégât</strong> pour encoder. Une fenêtre s'ouvre avec tous les champs.</div>
+<div class="card"><div class="card-h">🔧 Dégâts constatés</div><div class="card-b" style="padding:12px">
+  <div class="rows" id="rows-list"></div>
+  <button class="add-row" onclick="openEdit(-1)">+ Ajouter un dégât</button>
+</div></div>
+<div class="card"><div class="card-h">📊 Récapitulatif</div><div class="card-b">
+  <div class="recap">
+    <div class="rbox rb1"><div class="rl">Total travaux</div><div class="rv" id="r-total">0,00 €</div></div>
+    <div class="rbox rb2"><div class="rl">Part propriétaire</div><div class="rv" id="r-pro">0,00 €</div></div>
+    <div class="rbox rb3"><div class="rl">À retenir locataire</div><div class="rv" id="r-loc">0,00 €</div></div>
   </div>
+</div></div>
+<div class="card"><div class="card-h">📝 Observations</div><div class="card-b">
+  <div class="field"><label>Remarques libres</label>
+    <textarea id="obs" rows="3" placeholder="Remarques, clés remises, observations…"></textarea></div>
+</div></div>
+<div class="navbot">
+  <button class="btn btn-out" onclick="goTo(0)">← Retour</button>
+  <button class="btn btn-navy" onclick="goTo(2)">Signatures →</button>
+</div>
 </div>
 
 <!-- ③ SIGNATURES -->
 <div class="step" id="s2">
-  <div class="infobox">✍️ Appuyez sur la zone de signature pour signer au doigt. La mention <strong>Lu et approuvé</strong> est incluse.</div>
-  <div class="card"><div class="card-h">✍️ Signatures</div><div class="card-b">
-    <div class="sigs">
-      <div class="sigbox">
-        <div class="sigh">Locataire</div><div class="sigm">Lu et approuvé</div>
-        <canvas class="sigprev" id="sp-loc" onclick="openSig('loc')"></canvas>
-        <div class="sigacts">
-          <button class="btn btn-navy btn-sm" onclick="openSig('loc')">✏️ Signer</button>
-          <button class="btn btn-out btn-sm" onclick="clearSig('loc')">✕</button>
-        </div>
-      </div>
-      <div class="sigbox">
-        <div class="sigh">Propriétaire ou mandataire</div><div class="sigm">Lu et approuvé</div>
-        <canvas class="sigprev" id="sp-pro" onclick="openSig('pro')"></canvas>
-        <div class="sigacts">
-          <button class="btn btn-navy btn-sm" onclick="openSig('pro')">✏️ Signer</button>
-          <button class="btn btn-out btn-sm" onclick="clearSig('pro')">✕</button>
-        </div>
-      </div>
-      <div class="sigbox">
-        <div class="sigh">Agent / Expert</div><div class="sigm">Lu et approuvé</div>
-        <canvas class="sigprev" id="sp-exp" onclick="openSig('exp')"></canvas>
-        <div class="sigacts">
-          <button class="btn btn-navy btn-sm" onclick="openSig('exp')">✏️ Signer</button>
-          <button class="btn btn-out btn-sm" onclick="clearSig('exp')">✕</button>
-        </div>
+<div class="infobox">✍️ Appuyez sur la zone de signature pour signer au doigt. La mention <strong>Lu et approuvé</strong> est incluse.</div>
+<div class="card"><div class="card-h">✍️ Signatures</div><div class="card-b">
+  <div class="sigs">
+    <div class="sigbox">
+      <div class="sigh">Locataire</div><div class="sigm">Lu et approuvé</div>
+      <canvas class="sigprev" id="sp-loc" onclick="openSig('loc')"></canvas>
+      <div class="sigacts">
+        <button class="btn btn-navy btn-sm" onclick="openSig('loc')">✏️ Signer</button>
+        <button class="btn btn-out btn-sm" onclick="clearSig('loc')">✕</button>
       </div>
     </div>
-  </div></div>
-  <div class="navbot">
-    <button class="btn btn-out" onclick="goTo(1)">← Retour</button>
-    <button class="btn btn-navy" onclick="goTo(3)">Document →</button>
+    <div class="sigbox">
+      <div class="sigh">Propriétaire ou mandataire</div><div class="sigm">Lu et approuvé</div>
+      <canvas class="sigprev" id="sp-pro" onclick="openSig('pro')"></canvas>
+      <div class="sigacts">
+        <button class="btn btn-navy btn-sm" onclick="openSig('pro')">✏️ Signer</button>
+        <button class="btn btn-out btn-sm" onclick="clearSig('pro')">✕</button>
+      </div>
+    </div>
+    <div class="sigbox">
+      <div class="sigh">Agent / Expert</div><div class="sigm">Lu et approuvé</div>
+      <canvas class="sigprev" id="sp-exp" onclick="openSig('exp')"></canvas>
+      <div class="sigacts">
+        <button class="btn btn-navy btn-sm" onclick="openSig('exp')">✏️ Signer</button>
+        <button class="btn btn-out btn-sm" onclick="clearSig('exp')">✕</button>
+      </div>
+    </div>
   </div>
+</div></div>
+<div class="navbot">
+  <button class="btn btn-out" onclick="goTo(1)">← Retour</button>
+  <button class="btn btn-navy" onclick="goTo(3)">Document →</button>
+</div>
 </div>
 
 <!-- ④ DOCUMENT -->
 <div class="step" id="s3">
-  <div class="card"><div class="card-h">📄 Générer le document</div><div class="card-b">
-    <div class="infobox" id="doc-summary">Complétez les étapes précédentes.</div>
-    <button class="btn btn-gold btn-full" id="gen-btn" onclick="genDoc()" style="font-size:16px;padding:16px;margin-bottom:10px">
-      📄 Générer le document
-    </button>
-    <div id="doc-result" style="display:none">
-      <div class="gen-hint" id="gen-hint"></div>
-      <div id="pages-wrap"></div>
-      <div class="g2" style="margin-bottom:10px">
-        <div class="field"><label>E-mail locataire</label><input type="email" id="em-loc" placeholder="locataire@email.com" inputmode="email"/></div>
-        <div class="field"><label>E-mail propriétaire</label><input type="email" id="em-pro" placeholder="proprio@email.com" inputmode="email"/></div>
-      </div>
-      <button class="btn btn-green btn-full" onclick="prepareMail()">✉️ Préparer le mail</button>
-      <div id="mail-wrap" style="display:none;margin-top:12px;padding:14px;background:#D1FAE5;border-radius:8px;text-align:center"></div>
+<div class="card"><div class="card-h">📄 Générer le document</div><div class="card-b">
+  <div class="infobox" id="doc-summary">Complétez les étapes précédentes.</div>
+  <button class="btn btn-gold btn-full" id="gen-btn" onclick="genDoc()" style="font-size:16px;padding:16px;margin-bottom:10px">
+    📄 Générer le document
+  </button>
+  <div id="doc-result" style="display:none">
+    <div class="gen-hint" id="gen-hint"></div>
+    <div id="pages-wrap"></div>
+    <div class="g2" style="margin-bottom:10px">
+      <div class="field"><label>E-mail locataire</label><input type="email" id="em-loc" placeholder="locataire@email.com" inputmode="email"/></div>
+      <div class="field"><label>E-mail propriétaire</label><input type="email" id="em-pro" placeholder="proprio@email.com" inputmode="email"/></div>
     </div>
-  </div></div>
-  <div class="navbot">
-    <button class="btn btn-out" onclick="goTo(2)">← Retour</button>
-    <span></span>
+    <button class="btn btn-green btn-full" onclick="prepareMail()">✉️ Préparer le mail</button>
+    <div id="mail-wrap" style="display:none;margin-top:12px;padding:14px;background:#D1FAE5;border-radius:8px;text-align:center"></div>
   </div>
+</div></div>
+<div class="navbot">
+  <button class="btn btn-out" onclick="goTo(2)">← Retour</button>
+  <span></span>
+</div>
 </div>
 
 </main>
@@ -245,69 +245,69 @@ main{max-width:860px;margin:0 auto;padding:14px 12px 80px}
 <!-- MODAL DÉGÂT -->
 <div class="mov" id="edit-mov">
 <div class="mdg">
-  <div class="mdgtitle"><span id="edit-title">Nouveau dégât</span><button class="mclose" onclick="closeEdit()">✕</button></div>
-  <div class="g2" style="margin-bottom:12px">
-    <div class="field"><label>Étage</label><div id="ss-etage"></div></div>
-    <div class="field"><label>Pièce</label><div id="ss-piece"></div></div>
+<div class="mdgtitle"><span id="edit-title">Nouveau dégât</span><button class="mclose" onclick="closeEdit()">✕</button></div>
+<div class="g2" style="margin-bottom:12px">
+  <div class="field"><label>Étage</label><div id="ss-etage"></div></div>
+  <div class="field"><label>Pièce</label><div id="ss-piece"></div></div>
+</div>
+<div class="tabs">
+  <button class="tab on" id="tab-cat-btn" onclick="switchTab('cat')">📋 Catalogue</button>
+  <button class="tab" id="tab-lib-btn" onclick="switchTab('lib')">✏️ Saisie libre</button>
+</div>
+<div id="tab-cat">
+  <div class="field" style="margin-bottom:10px"><label>Dégât — tapez pour filtrer</label><div id="ss-poste"></div></div>
+</div>
+<div id="tab-lib" style="display:none">
+  <div class="field" style="margin-bottom:10px"><label>Description libre</label>
+    <textarea id="m-libre" rows="2" placeholder="Décrivez librement le dégât…"
+      style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:12px 13px;font-size:16px;font-family:var(--font);background:var(--greyBg)"
+      oninput="calcMdg()"></textarea></div>
+  <div class="numg" style="margin-bottom:10px">
+    <div class="nfield"><label>Unité</label><input type="text" id="m-u-lib" placeholder="m², pièce…" oninput="syncLib()"/></div>
+    <div class="nfield"><label>Prix (€)</label><input type="number" id="m-p-lib" placeholder="0.00" min="0" step="0.01" inputmode="decimal" oninput="syncLib()"/></div>
   </div>
-  <div class="tabs">
-    <button class="tab on" id="tab-cat-btn" onclick="switchTab('cat')">📋 Catalogue</button>
-    <button class="tab" id="tab-lib-btn" onclick="switchTab('lib')">✏️ Saisie libre</button>
+</div>
+<div class="numg numg3">
+  <div class="nfield"><label>Unité</label><input type="text" id="m-unite"/></div>
+  <div class="nfield"><label>Prix unit. (€)</label><input type="number" id="m-prix" placeholder="0.00" min="0" step="0.01" inputmode="decimal" oninput="calcMdg()"/></div>
+  <div class="nfield"><label>Quantité</label><input type="number" id="m-qte" placeholder="1" min="0" step="0.01" inputmode="decimal" oninput="calcMdg()"/></div>
+</div>
+<div class="numg" style="margin-top:10px">
+  <div class="nfield">
+    <label>Âge équipement (ans)</label>
+    <input type="number" id="m-age" placeholder="auto" min="0" step="1" inputmode="numeric" oninput="calcMdg()"/>
+    <div class="ntag" id="age-hint">Vide = durée occupation</div>
   </div>
-  <div id="tab-cat">
-    <div class="field" style="margin-bottom:10px"><label>Dégât — tapez pour filtrer</label><div id="ss-poste"></div></div>
+  <div class="nfield">
+    <label>Durée de vie (ans)</label>
+    <input type="number" id="m-dv" placeholder="0=n/a" min="0" step="1" inputmode="numeric" oninput="calcMdg()"/>
+    <div class="ntag">0 ou vide = vétusté non applicable</div>
   </div>
-  <div id="tab-lib" style="display:none">
-    <div class="field" style="margin-bottom:10px"><label>Description libre</label>
-      <textarea id="m-libre" rows="2" placeholder="Décrivez librement le dégât…"
-        style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:12px 13px;font-size:16px;font-family:var(--font);background:var(--greyBg)"
-        oninput="calcMdg()"></textarea></div>
-    <div class="numg" style="margin-bottom:10px">
-      <div class="nfield"><label>Unité</label><input type="text" id="m-u-lib" placeholder="m², pièce…" oninput="syncLib()"/></div>
-      <div class="nfield"><label>Prix (€)</label><input type="number" id="m-p-lib" placeholder="0.00" min="0" step="0.01" inputmode="decimal" oninput="syncLib()"/></div>
-    </div>
-  </div>
-  <div class="numg numg3">
-    <div class="nfield"><label>Unité</label><input type="text" id="m-unite"/></div>
-    <div class="nfield"><label>Prix unit. (€)</label><input type="number" id="m-prix" placeholder="0.00" min="0" step="0.01" inputmode="decimal" oninput="calcMdg()"/></div>
-    <div class="nfield"><label>Quantité</label><input type="number" id="m-qte" placeholder="1" min="0" step="0.01" inputmode="decimal" oninput="calcMdg()"/></div>
-  </div>
-  <div class="numg" style="margin-top:10px">
-    <div class="nfield">
-      <label>Âge équipement (ans)</label>
-      <input type="number" id="m-age" placeholder="auto" min="0" step="1" inputmode="numeric" oninput="calcMdg()"/>
-      <div class="ntag" id="age-hint">Vide = durée occupation</div>
-    </div>
-    <div class="nfield">
-      <label>Durée de vie (ans)</label>
-      <input type="number" id="m-dv" placeholder="0=n/a" min="0" step="1" inputmode="numeric" oninput="calcMdg()"/>
-      <div class="ntag">0 ou vide = vétusté non applicable</div>
-    </div>
-  </div>
-  <div class="calcres">
-    <div class="crow"><span>Montant brut</span><span id="cr-brut">—</span></div>
-    <div class="crow"><span>Vétusté</span><span id="cr-vet">—</span></div>
-    <div class="crow"><span>Part propriétaire</span><span id="cr-pro">—</span></div>
-    <div class="crow big"><span>💶 Part locataire</span><span id="cr-loc">—</span></div>
-  </div>
-  <div class="acts">
-    <button class="btn btn-navy" style="flex:1" onclick="saveEdit()">✅ Enregistrer</button>
-    <button class="btn btn-out" style="flex:1" onclick="closeEdit()">Annuler</button>
-  </div>
+</div>
+<div class="calcres">
+  <div class="crow"><span>Montant brut</span><span id="cr-brut">—</span></div>
+  <div class="crow"><span>Vétusté</span><span id="cr-vet">—</span></div>
+  <div class="crow"><span>Part propriétaire</span><span id="cr-pro">—</span></div>
+  <div class="crow big"><span>💶 Part locataire</span><span id="cr-loc">—</span></div>
+</div>
+<div class="acts">
+  <button class="btn btn-navy" style="flex:1" onclick="saveEdit()">✅ Enregistrer</button>
+  <button class="btn btn-out" style="flex:1" onclick="closeEdit()">Annuler</button>
+</div>
 </div>
 </div>
 
 <!-- MODAL SIGNATURE -->
 <div class="mov" id="sig-mov">
 <div class="sigmdg">
-  <div class="mdgtitle"><span id="sig-title">Signature</span><button class="mclose" onclick="closeSigModal()">✕</button></div>
-  <p style="font-size:12px;color:var(--grey);margin-bottom:10px;font-style:italic">Lu et approuvé — signez au doigt ou à la souris</p>
-  <canvas id="sig-canvas" height="240"></canvas>
-  <div class="acts">
-    <button class="btn btn-out btn-sm" onclick="clearSigCanvas()">✕ Effacer</button>
-    <button class="btn btn-red btn-sm" onclick="closeSigModal()">Annuler</button>
-    <button class="btn btn-green" style="flex:1" onclick="validateSig()">✅ Valider</button>
-  </div>
+<div class="mdgtitle"><span id="sig-title">Signature</span><button class="mclose" onclick="closeSigModal()">✕</button></div>
+<p style="font-size:12px;color:var(--grey);margin-bottom:10px;font-style:italic">Lu et approuvé — signez au doigt ou à la souris</p>
+<canvas id="sig-canvas" height="240"></canvas>
+<div class="acts">
+  <button class="btn btn-out btn-sm" onclick="clearSigCanvas()">✕ Effacer</button>
+  <button class="btn btn-red btn-sm" onclick="closeSigModal()">Annuler</button>
+  <button class="btn btn-green" style="flex:1" onclick="validateSig()">✅ Valider</button>
+</div>
 </div>
 </div>
 
@@ -320,77 +320,77 @@ const ETAGES=["Grenier", "3e étage", "2e étage", "1er étage", "Rez-de-chauss�
 
 
 function goTo(i){
-  document.querySelectorAll(".step").forEach(function(s,j){s.classList.toggle("on",i===j);});
-  document.querySelectorAll(".hpill").forEach(function(p,j){
-    p.classList.remove("on","done");
-    if(j===i)p.classList.add("on");
-    else if(j<i)p.classList.add("done");
-  });
-  if(i===3)updateDocSummary();
-  window.scrollTo(0,0);
+document.querySelectorAll(".step").forEach(function(s,j){s.classList.toggle("on",i===j);});
+document.querySelectorAll(".hpill").forEach(function(p,j){
+  p.classList.remove("on","done");
+  if(j===i)p.classList.add("on");
+  else if(j<i)p.classList.add("done");
+});
+if(i===3)updateDocSummary();
+window.scrollTo(0,0);
 }
 
 var duree=1;
 function calcDuree(){
-  var e=document.getElementById("d-entree").value;
-  var s=document.getElementById("d-sortie").value;
-  var b=document.getElementById("dur-badge");
-  if(!e||!s){b.innerHTML="—<small>toute année commencée = 1 an</small>";duree=1;return;}
-  var de=new Date(e),ds=new Date(s);
-  if(ds<=de){b.innerHTML="⚠️<small>date invalide</small>";return;}
-  var y=ds.getFullYear()-de.getFullYear();
-  var after=new Date(de);after.setFullYear(after.getFullYear()+y);
-  if(ds>after)y++;
-  duree=Math.max(1,y);
-  b.innerHTML=duree+" an"+(duree>1?"s":"")+"<small>toute année commencée = 1 an</small>";
-  document.getElementById("age-hint").textContent="Vide = "+duree+" an"+(duree>1?"s":"")+" (durée occupation)";
+var e=document.getElementById("d-entree").value;
+var s=document.getElementById("d-sortie").value;
+var b=document.getElementById("dur-badge");
+if(!e||!s){b.innerHTML="—<small>toute année commencée = 1 an</small>";duree=1;return;}
+var de=new Date(e),ds=new Date(s);
+if(ds<=de){b.innerHTML="⚠️<small>date invalide</small>";return;}
+var y=ds.getFullYear()-de.getFullYear();
+var after=new Date(de);after.setFullYear(after.getFullYear()+y);
+if(ds>after)y++;
+duree=Math.max(1,y);
+b.innerHTML=duree+" an"+(duree>1?"s":"")+"<small>toute année commencée = 1 an</small>";
+document.getElementById("age-hint").textContent="Vide = "+duree+" an"+(duree>1?"s":"")+" (durée occupation)";
 }
 
 function mkSS(containerId,items,placeholder,onSel,isCat){
-  var wrap=document.getElementById(containerId);
-  wrap.innerHTML="";
-  var div=document.createElement("div");div.style.position="relative";
-  var inp=document.createElement("input");inp.className="ssinput";inp.placeholder=placeholder;
-  inp.autocomplete="off";inp.autocorrect="off";inp.spellcheck=false;inp.type="text";
-  var arr=document.createElement("span");arr.className="ssarrow";arr.textContent="▾";
-  var drop=document.createElement("div");drop.className="ssdrop";
-  div.appendChild(inp);div.appendChild(arr);div.appendChild(drop);wrap.appendChild(div);
-  var clickable=[];
-  function build(f){
-    drop.innerHTML="";clickable=[];
-    var fl=(f||"").toLowerCase();
-    var lastCat=null;var n=0;
-    if(isCat){
-      CAT.forEach(function(row){
-        var cat=row[0],poste=row[1],gw=row[5];
-        if(fl&&poste.toLowerCase().indexOf(fl)<0&&cat.toLowerCase().indexOf(fl)<0)return;
-        if(cat!==lastCat){var h=document.createElement("div");h.className="sscat";h.textContent=cat;drop.appendChild(h);lastCat=cat;}
-        var d=document.createElement("div");d.className="ssitem";
-        d.textContent=poste;
-        if(gw){var dot=document.createElement("span");dot.className="gdot";dot.textContent="●";d.appendChild(dot);}
-        (function(p){
-          d.addEventListener("mousedown",function(e){e.preventDefault();inp.value=p;drop.classList.remove("on");onSel(p);});
-          d.addEventListener("touchstart",function(e){e.preventDefault();inp.value=p;drop.classList.remove("on");onSel(p);},{passive:false});
-        })(poste);
-        drop.appendChild(d);clickable.push({el:d,val:poste});n++;
-      });
-    }else{
-      items.forEach(function(v){
-        if(fl&&v.toLowerCase().indexOf(fl)<0)return;
-        var d=document.createElement("div");d.className="ssitem";d.textContent=v;
-        (function(val){
-          d.addEventListener("mousedown",function(e){e.preventDefault();inp.value=val;drop.classList.remove("on");onSel(val);});
-          d.addEventListener("touchstart",function(e){e.preventDefault();inp.value=val;drop.classList.remove("on");onSel(val);},{passive:false});
-        })(v);
-        drop.appendChild(d);clickable.push({el:d,val:v});n++;
-      });
-    }
-    if(!n){var em=document.createElement("div");em.className="ssempty";em.textContent="Aucun résultat — saisie libre acceptée";drop.appendChild(em);}
+var wrap=document.getElementById(containerId);
+wrap.innerHTML="";
+var div=document.createElement("div");div.style.position="relative";
+var inp=document.createElement("input");inp.className="ssinput";inp.placeholder=placeholder;
+inp.autocomplete="off";inp.autocorrect="off";inp.spellcheck=false;inp.type="text";
+var arr=document.createElement("span");arr.className="ssarrow";arr.textContent="▾";
+var drop=document.createElement("div");drop.className="ssdrop";
+div.appendChild(inp);div.appendChild(arr);div.appendChild(drop);wrap.appendChild(div);
+var clickable=[];
+function build(f){
+  drop.innerHTML="";clickable=[];
+  var fl=(f||"").toLowerCase();
+  var lastCat=null;var n=0;
+  if(isCat){
+    CAT.forEach(function(row){
+      var cat=row[0],poste=row[1],gw=row[5];
+      if(fl&&poste.toLowerCase().indexOf(fl)<0&&cat.toLowerCase().indexOf(fl)<0)return;
+      if(cat!==lastCat){var h=document.createElement("div");h.className="sscat";h.textContent=cat;drop.appendChild(h);lastCat=cat;}
+      var d=document.createElement("div");d.className="ssitem";
+      d.textContent=poste;
+      if(gw){var dot=document.createElement("span");dot.className="gdot";dot.textContent="●";d.appendChild(dot);}
+      (function(p){
+        d.addEventListener("mousedown",function(e){e.preventDefault();inp.value=p;drop.classList.remove("on");onSel(p);});
+        d.addEventListener("touchstart",function(e){e.preventDefault();inp.value=p;drop.classList.remove("on");onSel(p);},{passive:false});
+      })(poste);
+      drop.appendChild(d);clickable.push({el:d,val:poste});n++;
+    });
+  }else{
+    items.forEach(function(v){
+      if(fl&&v.toLowerCase().indexOf(fl)<0)return;
+      var d=document.createElement("div");d.className="ssitem";d.textContent=v;
+      (function(val){
+        d.addEventListener("mousedown",function(e){e.preventDefault();inp.value=val;drop.classList.remove("on");onSel(val);});
+        d.addEventListener("touchstart",function(e){e.preventDefault();inp.value=val;drop.classList.remove("on");onSel(val);},{passive:false});
+      })(v);
+      drop.appendChild(d);clickable.push({el:d,val:v});n++;
+    });
   }
-  inp.addEventListener("focus",function(){build(inp.value);drop.classList.add("on");});
-  inp.addEventListener("input",function(){build(inp.value);drop.classList.add("on");onSel(inp.value);});
-  inp.addEventListener("blur",function(){setTimeout(function(){drop.classList.remove("on");},200);});
-  return{get:function(){return inp.value;},set:function(v){inp.value=v;onSel(v);}};
+  if(!n){var em=document.createElement("div");em.className="ssempty";em.textContent="Aucun résultat — saisie libre acceptée";drop.appendChild(em);}
+}
+inp.addEventListener("focus",function(){build(inp.value);drop.classList.add("on");});
+inp.addEventListener("input",function(){build(inp.value);drop.classList.add("on");onSel(inp.value);});
+inp.addEventListener("blur",function(){setTimeout(function(){drop.classList.remove("on");},200);});
+return{get:function(){return inp.value;},set:function(v){inp.value=v;onSel(v);}};
 }
 
 var rows=[],editIdx=-1;
@@ -399,143 +399,143 @@ var ssEt,ssPi,ssPo,activeTab="cat";
 function fmtE(n){return (n||0).toLocaleString("fr-BE",{minimumFractionDigits:2,maximumFractionDigits:2})+" €";}
 
 function calcRow(rd){
-  var b=(rd.prix||0)*(rd.qte||0);
-  var dv=rd.dv||0;
-  var age=rd.age!=null?rd.age:duree;
-  var v=dv>0?Math.min(1,age/dv):0;
-  rd._b=b;rd._v=v;rd._loc=b*(1-v);rd._pro=b*v;
+var b=(rd.prix||0)*(rd.qte||0);
+var dv=rd.dv||0;
+var age=rd.age!=null?rd.age:duree;
+var v=dv>0?Math.min(1,age/dv):0;
+rd._b=b;rd._v=v;rd._loc=b*(1-v);rd._pro=b*v;
 }
 
 function renderRows(){
-  var list=document.getElementById("rows-list");
-  list.innerHTML="";
-  rows.forEach(function(rd,i){
-    calcRow(rd);
-    var vp=Math.round((rd._v||0)*100);
-    var vc=vp===0?"vt0":vp<50?"vtm":"vth";
-    var c=document.createElement("div");c.className="rcard";
-    c.innerHTML='<button class="rc-del" onclick="event.stopPropagation();delRow('+i+')">✕</button>'+
-      '<div class="rc-top"><div class="rnum">'+(i+1)+'</div>'+
-      '<div class="rc-main">'+
-      '<div class="rc-poste">'+(rd.poste||"(non défini)")+'</div>'+
-      '<div class="rc-sub">'+(rd.etage&&rd.piece?rd.etage+" · "+rd.piece:rd.etage||rd.piece||"—")+
-      (rd.unite?" · "+rd.unite:"")+(rd.qte!=null?" · qté "+rd.qte:"")+
-      ' <span class="vtc '+vc+'">'+vp+"% vétusté</span></div></div>"+
-      '<button style="background:none;border:none;font-size:20px;cursor:pointer;color:var(--grey);padding:4px" onclick="openEdit('+i+')">✏️</button></div>'+
-      '<div class="rc-amts">'+
-      '<div class="amt"><div class="al">Brut</div><div class="av">'+(rd._b>0?fmtE(rd._b):"—")+'</div></div>'+
-      '<div class="amt hl"><div class="al">Locataire</div><div class="av">'+(rd._b>0?fmtE(rd._loc):"—")+'</div></div>'+
-      '<div class="amt"><div class="al">Proprio</div><div class="av">'+(rd._b>0?fmtE(rd._pro):"—")+'</div></div>'+
-      '</div>';
-    c.addEventListener("click",function(e){if(!e.target.closest("button"))openEdit(i);});
-    list.appendChild(c);
-  });
-  recalcTotals();
+var list=document.getElementById("rows-list");
+list.innerHTML="";
+rows.forEach(function(rd,i){
+  calcRow(rd);
+  var vp=Math.round((rd._v||0)*100);
+  var vc=vp===0?"vt0":vp<50?"vtm":"vth";
+  var c=document.createElement("div");c.className="rcard";
+  c.innerHTML='<button class="rc-del" onclick="event.stopPropagation();delRow('+i+')">✕</button>'+
+    '<div class="rc-top"><div class="rnum">'+(i+1)+'</div>'+
+    '<div class="rc-main">'+
+    '<div class="rc-poste">'+(rd.poste||"(non défini)")+'</div>'+
+    '<div class="rc-sub">'+(rd.etage&&rd.piece?rd.etage+" · "+rd.piece:rd.etage||rd.piece||"—")+
+    (rd.unite?" · "+rd.unite:"")+(rd.qte!=null?" · qté "+rd.qte:"")+
+    ' <span class="vtc '+vc+'">'+vp+"% vétusté</span></div></div>"+
+    '<button style="background:none;border:none;font-size:20px;cursor:pointer;color:var(--grey);padding:4px" onclick="openEdit('+i+')">✏️</button></div>'+
+    '<div class="rc-amts">'+
+    '<div class="amt"><div class="al">Brut</div><div class="av">'+(rd._b>0?fmtE(rd._b):"—")+'</div></div>'+
+    '<div class="amt hl"><div class="al">Locataire</div><div class="av">'+(rd._b>0?fmtE(rd._loc):"—")+'</div></div>'+
+    '<div class="amt"><div class="al">Proprio</div><div class="av">'+(rd._b>0?fmtE(rd._pro):"—")+'</div></div>'+
+    '</div>';
+  c.addEventListener("click",function(e){if(!e.target.closest("button"))openEdit(i);});
+  list.appendChild(c);
+});
+recalcTotals();
 }
 
 function delRow(i){rows.splice(i,1);renderRows();}
 
 function recalcTotals(){
-  var tB=rows.reduce(function(s,r){return s+(r._b||0);},0);
-  var tL=rows.reduce(function(s,r){return s+(r._loc||0);},0);
-  var tP=rows.reduce(function(s,r){return s+(r._pro||0);},0);
-  document.getElementById("r-total").textContent=fmtE(tB);
-  document.getElementById("r-loc").textContent=fmtE(tL);
-  document.getElementById("r-pro").textContent=fmtE(tP);
+var tB=rows.reduce(function(s,r){return s+(r._b||0);},0);
+var tL=rows.reduce(function(s,r){return s+(r._loc||0);},0);
+var tP=rows.reduce(function(s,r){return s+(r._pro||0);},0);
+document.getElementById("r-total").textContent=fmtE(tB);
+document.getElementById("r-loc").textContent=fmtE(tL);
+document.getElementById("r-pro").textContent=fmtE(tP);
 }
 
 function switchTab(t){
-  activeTab=t;
-  document.getElementById("tab-cat").style.display=t==="cat"?"block":"none";
-  document.getElementById("tab-lib").style.display=t==="lib"?"block":"none";
-  document.getElementById("tab-cat-btn").classList.toggle("on",t==="cat");
-  document.getElementById("tab-lib-btn").classList.toggle("on",t==="lib");
+activeTab=t;
+document.getElementById("tab-cat").style.display=t==="cat"?"block":"none";
+document.getElementById("tab-lib").style.display=t==="lib"?"block":"none";
+document.getElementById("tab-cat-btn").classList.toggle("on",t==="cat");
+document.getElementById("tab-lib-btn").classList.toggle("on",t==="lib");
 }
 
 function syncLib(){
-  document.getElementById("m-unite").value=document.getElementById("m-u-lib").value;
-  document.getElementById("m-prix").value=document.getElementById("m-p-lib").value;
-  calcMdg();
+document.getElementById("m-unite").value=document.getElementById("m-u-lib").value;
+document.getElementById("m-prix").value=document.getElementById("m-p-lib").value;
+calcMdg();
 }
 
 function getPoste(){
-  if(activeTab==="lib")return document.getElementById("m-libre").value;
-  return ssPo?ssPo.get():"";
+if(activeTab==="lib")return document.getElementById("m-libre").value;
+return ssPo?ssPo.get():"";
 }
 
 function openEdit(idx){
-  editIdx=idx;
-  var rd=idx===-1?{}:rows[idx];
-  document.getElementById("edit-title").textContent=idx===-1?"Nouveau dégât":"Modifier le dégât";
-  ssEt=mkSS("ss-etage",ETAGES,"Étage…",function(){});
-  ssPi=mkSS("ss-piece",PIECES,"Pièce…",function(){});
-  ssPo=mkSS("ss-poste",[],  "Tapez pour filtrer…",function(v){
-    var f=null;
-    for(var i=0;i<CAT.length;i++){if(CAT[i][1]===v){f=CAT[i];break;}}
-    if(f){
-      document.getElementById("m-unite").value=f[2];
-      document.getElementById("m-prix").value=f[3];
-      document.getElementById("m-dv").value=f[4]>0?f[4]:"";
-    }
-    calcMdg();
-  },true);
-  ssEt.set(rd.etage||"");
-  ssPi.set(rd.piece||"");
-  var inCat=false;
-  if(rd.poste){for(var i=0;i<CAT.length;i++){if(CAT[i][1]===rd.poste){inCat=true;break;}}}
-  if(rd.poste&&!inCat){
-    switchTab("lib");
-    document.getElementById("m-libre").value=rd.poste||"";
-    document.getElementById("m-u-lib").value=rd.unite||"";
-    document.getElementById("m-p-lib").value=rd.prix!=null?rd.prix:"";
-  }else{
-    switchTab("cat");
-    if(rd.poste)ssPo.set(rd.poste);
+editIdx=idx;
+var rd=idx===-1?{}:rows[idx];
+document.getElementById("edit-title").textContent=idx===-1?"Nouveau dégât":"Modifier le dégât";
+ssEt=mkSS("ss-etage",ETAGES,"Étage…",function(){});
+ssPi=mkSS("ss-piece",PIECES,"Pièce…",function(){});
+ssPo=mkSS("ss-poste",[],  "Tapez pour filtrer…",function(v){
+  var f=null;
+  for(var i=0;i<CAT.length;i++){if(CAT[i][1]===v){f=CAT[i];break;}}
+  if(f){
+    document.getElementById("m-unite").value=f[2];
+    document.getElementById("m-prix").value=f[3];
+    document.getElementById("m-dv").value=f[4]>0?f[4]:"";
   }
-  document.getElementById("m-unite").value=rd.unite||"";
-  document.getElementById("m-prix").value=rd.prix!=null?rd.prix:"";
-  document.getElementById("m-qte").value=rd.qte!=null?rd.qte:"";
-  document.getElementById("m-age").value=rd.age!=null?rd.age:"";
-  document.getElementById("m-dv").value=rd.dv!=null?rd.dv:"";
-  document.getElementById("age-hint").textContent="Vide = "+duree+" an"+(duree>1?"s":"")+" (durée occupation)";
   calcMdg();
-  document.getElementById("edit-mov").classList.add("on");
+},true);
+ssEt.set(rd.etage||"");
+ssPi.set(rd.piece||"");
+var inCat=false;
+if(rd.poste){for(var i=0;i<CAT.length;i++){if(CAT[i][1]===rd.poste){inCat=true;break;}}}
+if(rd.poste&&!inCat){
+  switchTab("lib");
+  document.getElementById("m-libre").value=rd.poste||"";
+  document.getElementById("m-u-lib").value=rd.unite||"";
+  document.getElementById("m-p-lib").value=rd.prix!=null?rd.prix:"";
+}else{
+  switchTab("cat");
+  if(rd.poste)ssPo.set(rd.poste);
+}
+document.getElementById("m-unite").value=rd.unite||"";
+document.getElementById("m-prix").value=rd.prix!=null?rd.prix:"";
+document.getElementById("m-qte").value=rd.qte!=null?rd.qte:"";
+document.getElementById("m-age").value=rd.age!=null?rd.age:"";
+document.getElementById("m-dv").value=rd.dv!=null?rd.dv:"";
+document.getElementById("age-hint").textContent="Vide = "+duree+" an"+(duree>1?"s":"")+" (durée occupation)";
+calcMdg();
+document.getElementById("edit-mov").classList.add("on");
 }
 
 function closeEdit(){document.getElementById("edit-mov").classList.remove("on");}
 
 function calcMdg(){
-  var prix=parseFloat(document.getElementById("m-prix").value)||0;
-  var qte=parseFloat(document.getElementById("m-qte").value)||0;
-  var ageRaw=document.getElementById("m-age").value;
-  var dvRaw=document.getElementById("m-dv").value;
-  var age=ageRaw===""?duree:parseFloat(ageRaw)||0;
-  var dv=parseFloat(dvRaw)||0;
-  var b=prix*qte,v=dv>0?Math.min(1,age/dv):0;
-  var loc=b*(1-v),pro=b*v;
-  document.getElementById("cr-brut").textContent=b>0?fmtE(b):"—";
-  document.getElementById("cr-vet").textContent=b>0?Math.round(v*100)+"%":"—";
-  document.getElementById("cr-pro").textContent=b>0?fmtE(pro):"—";
-  document.getElementById("cr-loc").textContent=b>0?fmtE(loc):"—";
+var prix=parseFloat(document.getElementById("m-prix").value)||0;
+var qte=parseFloat(document.getElementById("m-qte").value)||0;
+var ageRaw=document.getElementById("m-age").value;
+var dvRaw=document.getElementById("m-dv").value;
+var age=ageRaw===""?duree:parseFloat(ageRaw)||0;
+var dv=parseFloat(dvRaw)||0;
+var b=prix*qte,v=dv>0?Math.min(1,age/dv):0;
+var loc=b*(1-v),pro=b*v;
+document.getElementById("cr-brut").textContent=b>0?fmtE(b):"—";
+document.getElementById("cr-vet").textContent=b>0?Math.round(v*100)+"%":"—";
+document.getElementById("cr-pro").textContent=b>0?fmtE(pro):"—";
+document.getElementById("cr-loc").textContent=b>0?fmtE(loc):"—";
 }
 
 function saveEdit(){
-  if(activeTab==="lib"){
-    document.getElementById("m-unite").value=document.getElementById("m-u-lib").value;
-    document.getElementById("m-prix").value=document.getElementById("m-p-lib").value;
-  }
-  var ageRaw=document.getElementById("m-age").value;
-  var rd={
-    etage:ssEt.get(),piece:ssPi.get(),poste:getPoste(),
-    unite:document.getElementById("m-unite").value,
-    prix:parseFloat(document.getElementById("m-prix").value)||null,
-    qte:parseFloat(document.getElementById("m-qte").value)||null,
-    age:ageRaw===""?null:parseFloat(ageRaw),
-    dv:parseFloat(document.getElementById("m-dv").value)||null
-  };
-  calcRow(rd);
-  if(editIdx===-1)rows.push(rd);else rows[editIdx]=rd;
-  closeEdit();renderRows();
+if(activeTab==="lib"){
+  document.getElementById("m-unite").value=document.getElementById("m-u-lib").value;
+  document.getElementById("m-prix").value=document.getElementById("m-p-lib").value;
+}
+var ageRaw=document.getElementById("m-age").value;
+var rd={
+  etage:ssEt.get(),piece:ssPi.get(),poste:getPoste(),
+  unite:document.getElementById("m-unite").value,
+  prix:parseFloat(document.getElementById("m-prix").value)||null,
+  qte:parseFloat(document.getElementById("m-qte").value)||null,
+  age:ageRaw===""?null:parseFloat(ageRaw),
+  dv:parseFloat(document.getElementById("m-dv").value)||null
+};
+calcRow(rd);
+if(editIdx===-1)rows.push(rd);else rows[editIdx]=rd;
+closeEdit();renderRows();
 }
 
 var sigs={loc:null,pro:null,exp:null};
@@ -543,250 +543,268 @@ var sigTarget=null,sigDrawing=false,sigCtx=null;
 var sigNames={loc:"Locataire",pro:"Propriétaire ou mandataire",exp:"Agent / Expert"};
 
 function initPreviews(){
-  ["loc","pro","exp"].forEach(function(k){
-    var c=document.getElementById("sp-"+k);
-    c.width=c.offsetWidth||220;c.height=90;
-  });
+["loc","pro","exp"].forEach(function(k){
+  var c=document.getElementById("sp-"+k);
+  c.width=c.offsetWidth||220;c.height=90;
+});
 }
 window.addEventListener("load",initPreviews);
 window.addEventListener("resize",initPreviews);
 
 function openSig(who){
-  sigTarget=who;
-  document.getElementById("sig-title").textContent="Signature — "+sigNames[who];
-  document.getElementById("sig-mov").classList.add("on");
-  var c=document.getElementById("sig-canvas");
-  c.width=Math.min(window.innerWidth-40,540);c.height=240;
-  sigCtx=c.getContext("2d");
-  sigCtx.strokeStyle="#1B3A6B";sigCtx.lineWidth=3;sigCtx.lineCap="round";sigCtx.lineJoin="round";
-  sigCtx.clearRect(0,0,c.width,c.height);c.classList.remove("signed");
-  if(sigs[who]){var img=new Image();img.src=sigs[who];img.onload=function(){sigCtx.drawImage(img,0,0,c.width,c.height);c.classList.add("signed");};}
-  function gp(e){var r=c.getBoundingClientRect();var s=e.touches?e.touches[0]:e;return{x:(s.clientX-r.left)*(c.width/r.width),y:(s.clientY-r.top)*(c.height/r.height)};}
-  c.onmousedown=function(e){sigDrawing=true;var p=gp(e);sigCtx.beginPath();sigCtx.moveTo(p.x,p.y);c.classList.add("signed");};
-  c.onmousemove=function(e){if(!sigDrawing)return;e.preventDefault();var p=gp(e);sigCtx.lineTo(p.x,p.y);sigCtx.stroke();};
-  c.onmouseup=function(){sigDrawing=false;};c.onmouseleave=function(){sigDrawing=false;};
-  c.ontouchstart=function(e){e.preventDefault();sigDrawing=true;var p=gp(e);sigCtx.beginPath();sigCtx.moveTo(p.x,p.y);c.classList.add("signed");};
-  c.ontouchmove=function(e){if(!sigDrawing)return;e.preventDefault();var p=gp(e);sigCtx.lineTo(p.x,p.y);sigCtx.stroke();};
-  c.ontouchend=function(){sigDrawing=false;};
+sigTarget=who;
+document.getElementById("sig-title").textContent="Signature — "+sigNames[who];
+document.getElementById("sig-mov").classList.add("on");
+var c=document.getElementById("sig-canvas");
+c.width=Math.min(window.innerWidth-40,540);c.height=240;
+sigCtx=c.getContext("2d");
+sigCtx.strokeStyle="#1B3A6B";sigCtx.lineWidth=3;sigCtx.lineCap="round";sigCtx.lineJoin="round";
+sigCtx.clearRect(0,0,c.width,c.height);c.classList.remove("signed");
+if(sigs[who]){var img=new Image();img.src=sigs[who];img.onload=function(){sigCtx.drawImage(img,0,0,c.width,c.height);c.classList.add("signed");};}
+function gp(e){var r=c.getBoundingClientRect();var s=e.touches?e.touches[0]:e;return{x:(s.clientX-r.left)*(c.width/r.width),y:(s.clientY-r.top)*(c.height/r.height)};}
+c.onmousedown=function(e){sigDrawing=true;var p=gp(e);sigCtx.beginPath();sigCtx.moveTo(p.x,p.y);c.classList.add("signed");};
+c.onmousemove=function(e){if(!sigDrawing)return;e.preventDefault();var p=gp(e);sigCtx.lineTo(p.x,p.y);sigCtx.stroke();};
+c.onmouseup=function(){sigDrawing=false;};c.onmouseleave=function(){sigDrawing=false;};
+c.ontouchstart=function(e){e.preventDefault();sigDrawing=true;var p=gp(e);sigCtx.beginPath();sigCtx.moveTo(p.x,p.y);c.classList.add("signed");};
+c.ontouchmove=function(e){if(!sigDrawing)return;e.preventDefault();var p=gp(e);sigCtx.lineTo(p.x,p.y);sigCtx.stroke();};
+c.ontouchend=function(){sigDrawing=false;};
 }
 function clearSigCanvas(){var c=document.getElementById("sig-canvas");sigCtx.clearRect(0,0,c.width,c.height);c.classList.remove("signed");}
 function closeSigModal(){document.getElementById("sig-mov").classList.remove("on");}
 function validateSig(){
-  var c=document.getElementById("sig-canvas");
-  sigs[sigTarget]=c.toDataURL("image/png");
-  var mini=document.getElementById("sp-"+sigTarget);
-  mini.width=mini.offsetWidth||220;mini.height=90;
-  var mc=mini.getContext("2d"),img=new Image();img.src=sigs[sigTarget];
-  img.onload=function(){mc.drawImage(img,0,0,mini.width,mini.height);};
-  mini.classList.add("signed");closeSigModal();
+var c=document.getElementById("sig-canvas");
+sigs[sigTarget]=c.toDataURL("image/png");
+var mini=document.getElementById("sp-"+sigTarget);
+mini.width=mini.offsetWidth||220;mini.height=90;
+var mc=mini.getContext("2d"),img=new Image();img.src=sigs[sigTarget];
+img.onload=function(){mc.drawImage(img,0,0,mini.width,mini.height);};
+mini.classList.add("signed");closeSigModal();
 }
 function clearSig(who){
-  sigs[who]=null;var c=document.getElementById("sp-"+who);
-  c.getContext("2d").clearRect(0,0,c.width,c.height);c.classList.remove("signed");
+sigs[who]=null;var c=document.getElementById("sp-"+who);
+c.getContext("2d").clearRect(0,0,c.width,c.height);c.classList.remove("signed");
 }
 
 function updateDocSummary(){
-  var tB=rows.reduce(function(s,r){return s+(r._b||0);},0);
-  var tL=rows.reduce(function(s,r){return s+(r._loc||0);},0);
-  var sigOk=Object.values(sigs).filter(Boolean).length;
-  document.getElementById("doc-summary").innerHTML=
-    "<strong>"+rows.length+" dégât(s)</strong> — Total : <strong>"+fmtE(tB)+"</strong> — À retenir : <strong>"+fmtE(tL)+"</strong><br>"+
-    "Signatures : "+sigOk+"/3 "+(sigOk<3?"⚠️ certaines manquantes":"✅ toutes signées");
-  document.getElementById("doc-result").style.display="none";
+var tB=rows.reduce(function(s,r){return s+(r._b||0);},0);
+var tL=rows.reduce(function(s,r){return s+(r._loc||0);},0);
+var sigOk=Object.values(sigs).filter(Boolean).length;
+document.getElementById("doc-summary").innerHTML=
+  "<strong>"+rows.length+" dégât(s)</strong> — Total : <strong>"+fmtE(tB)+"</strong> — À retenir : <strong>"+fmtE(tL)+"</strong><br>"+
+  "Signatures : "+sigOk+"/3 "+(sigOk<3?"⚠️ certaines manquantes":"✅ toutes signées");
+document.getElementById("doc-result").style.display="none";
 }
 
 function genDoc(){
-  var btn=document.getElementById("gen-btn");
-  btn.disabled=true;btn.textContent="⏳ Génération…";
-  setTimeout(function(){
-    try{
-      var canvases=renderDocPages();
-      var wrap=document.getElementById("pages-wrap");
-      wrap.innerHTML="";
-      canvases.forEach(function(cv,i){
-        wrap.appendChild(cv);
-        var lbl=document.createElement("div");lbl.className="page-lbl";
-        lbl.textContent="Page "+(i+1)+" / "+canvases.length+" — appui long → Enregistrer / Partager";
-        wrap.appendChild(lbl);
-      });
-      var isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent);
-      document.getElementById("gen-hint").innerHTML=isIOS
-        ?"✅ <strong>Document généré !</strong> Appuyez longuement sur une page → <em>Enregistrer l\u2019image</em> ou <em>Partager ↗</em> → Mail, AirDrop, Fichiers…"
-        :"✅ <strong>Document généré !</strong> Clic droit sur une page → <em>Enregistrer l\u2019image sous</em>.";
-      document.getElementById("doc-result").style.display="block";
-      wrap.scrollIntoView({behavior:"smooth",block:"start"});
-    }catch(e){alert("Erreur : "+e.message);}
-    btn.disabled=false;btn.textContent="📄 Générer le document";
-  },50);
+var btn=document.getElementById("gen-btn");
+btn.disabled=true;btn.textContent="⏳ Génération…";
+setTimeout(function(){
+  try{
+    var canvases=renderDocPages();
+    var wrap=document.getElementById("pages-wrap");
+    wrap.innerHTML="";
+    canvases.forEach(function(cv,i){
+      wrap.appendChild(cv);
+      var lbl=document.createElement("div");lbl.className="page-lbl";
+      lbl.textContent="Page "+(i+1)+" / "+canvases.length+" — appui long → Enregistrer / Partager";
+      wrap.appendChild(lbl);
+    });
+    var isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent);
+    document.getElementById("gen-hint").innerHTML=isIOS
+      ?"✅ <strong>Document généré !</strong> Appuyez longuement sur une page → <em>Enregistrer l\u2019image</em> ou <em>Partager ↗</em> → Mail, AirDrop, Fichiers…"
+      :"✅ <strong>Document généré !</strong> Clic droit sur une page → <em>Enregistrer l\u2019image sous</em>.";
+    document.getElementById("doc-result").style.display="block";
+    wrap.scrollIntoView({behavior:"smooth",block:"start"});
+  }catch(e){alert("Erreur : "+e.message);}
+  btn.disabled=false;btn.textContent="📄 Générer le document";
+},50);
 }
 
 function renderDocPages(){
-  var DPI=150,WMM=210,HMM=297;
-  var sc=DPI/25.4;
-  var W=Math.round(WMM*sc),H=Math.round(HMM*sc);
-  var ML=Math.round(10*sc),CW=Math.round(190*sc);
-  var NV="#1B3A6B",GR="#6B7280",LG="#F3F4F6",YL="#FEF3C7";
+var DPI=150,WMM=210,HMM=297;
+var sc=DPI/25.4;
+var W=Math.round(WMM*sc),H=Math.round(HMM*sc);
+var ML=Math.round(10*sc),CW=Math.round(190*sc);
+var NV="#1B3A6B",GR="#6B7280",LG="#F3F4F6",YL="#FEF3C7";
 
-  function mm(v){return Math.round(v*sc);}
-  function mkC(){
-    var c=document.createElement("canvas");c.width=W;c.height=H;
-    var ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,W,H);
-    return{c:c,ctx:ctx};
-  }
+function mm(v){return Math.round(v*sc);}
+function mkC(){
+  var c=document.createElement("canvas");c.width=W;c.height=H;
+  var ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,W,H);
+  return{c:c,ctx:ctx};
+}
 
-  var addr=document.getElementById("adresse").value||"";
-  var bail=document.getElementById("bailleur").value||"—";
-  var mand=document.getElementById("mandataire").value||"—";
-  var loca=document.getElementById("locataire").value||"—";
-  var xprt=document.getElementById("expert").value||"—";
-  var lieu=document.getElementById("lieu").value||"___________";
-  var obs=document.getElementById("obs").value||"";
-  function fd(d){return d?d.split("-").reverse().join("/"):"—";}
-  var ent=fd(document.getElementById("d-entree").value);
-  var sor=fd(document.getElementById("d-sortie").value);
-  var tB=rows.reduce(function(s,r){return s+(r._b||0);},0);
-  var tL=rows.reduce(function(s,r){return s+(r._loc||0);},0);
-  var tP=rows.reduce(function(s,r){return s+(r._pro||0);},0);
+var addr=document.getElementById("adresse").value||"";
+var bail=document.getElementById("bailleur").value||"—";
+var mand=document.getElementById("mandataire").value||"—";
+var loca=document.getElementById("locataire").value||"—";
+var xprt=document.getElementById("expert").value||"—";
+var lieu=document.getElementById("lieu").value||"___________";
+var obs=document.getElementById("obs").value||"";
+function fd(d){return d?d.split("-").reverse().join("/"):"—";}
+var ent=fd(document.getElementById("d-entree").value);
+var sor=fd(document.getElementById("d-sortie").value);
+var tB=rows.reduce(function(s,r){return s+(r._b||0);},0);
+var tL=rows.reduce(function(s,r){return s+(r._loc||0);},0);
+var tP=rows.reduce(function(s,r){return s+(r._pro||0);},0);
 
-  var pages=[],cur=mkC(),ctx=cur.ctx,pgN=1;
-  pages.push(cur.c);
-  var y=0;
+var pages=[],cur=mkC(),ctx=cur.ctx,pgN=1;
+pages.push(cur.c);
+var y=0;
 
-  function newPage(){
-    drawFtr(ctx,pgN);
-    cur=mkC();ctx=cur.ctx;pages.push(cur.c);pgN++;y=mm(16);
-  }
-  function chk(n){if(y+mm(n)>H-mm(12))newPage();}
-  function setF(bold,sz){ctx.font=(bold?"700 ":"400 ")+mm(sz)+"px Arial,sans-serif";}
-  function fit(txt,maxPx){
-    var t=String(txt||"—");
-    while(ctx.measureText(t).width>maxPx&&t.length>3)t=t.slice(0,-1)+"…";
-    return t;
-  }
-  function drawFtr(c2,n){
-    c2.fillStyle=NV;c2.fillRect(0,H-mm(9),W,mm(9));
-    c2.fillStyle="#fff";c2.font="400 "+mm(7)+"px Arial,sans-serif";
-    c2.textAlign="left";c2.fillText("FMP Immo srl — IPI 513.312 — Dégâts Locatifs",ML,H-mm(3));
-    c2.textAlign="right";c2.fillText("Page "+n,W-ML,H-mm(3));c2.textAlign="left";
-  }
-  function secH(t){
-    chk(10);ctx.fillStyle=NV;ctx.fillRect(ML,y-mm(4),CW,mm(6.5));
-    ctx.fillStyle="#fff";setF(true,7.5);ctx.textAlign="left";
-    ctx.fillText(t.toUpperCase(),ML+mm(2),y+mm(0.5));ctx.fillStyle="#000";y+=mm(8);
-  }
-  function fld(lbl,val,x,fy,w){
-    ctx.fillStyle=GR;setF(false,7);ctx.fillText(lbl,x,fy);
-    ctx.fillStyle="#000";setF(true,9);ctx.fillText(fit(val,mm(w-2)),x,fy+mm(4.5));
-  }
-
-  // Header
-  ctx.fillStyle=NV;ctx.fillRect(0,0,W,mm(22));
-  ctx.fillStyle="#fff";ctx.textAlign="center";setF(true,16);
-  ctx.fillText("Dégâts Locatifs",W/2,mm(12));
-  setF(false,8);ctx.fillText("FMP Immo srl — IPI 513.312",W/2,mm(18));
-  ctx.textAlign="left";y=mm(28);
-
-  secH("Bien immobilier");fld("adresse du bien",addr,ML,y,190);y+=mm(11);
-  secH("Parties");
-  fld("bailleur / propriétaire",bail,ML,y,95);fld("mandataire",mand,ML+mm(95),y,95);y+=mm(11);
-  fld("locataire(s)",loca,ML,y,95);fld("agent / expert",xprt,ML+mm(95),y,95);y+=mm(13);
-  secH("Période");
-  fld("date entrée",ent,ML,y,63);fld("date sortie",sor,ML+mm(63),y,63);
-  fld("durée d\u2019occupation",duree+" an"+(duree>1?"s":""),ML+mm(126),y,63);y+=mm(13);
-
-  secH("Détail des dégâts constatés");
-  var cols=[{l:"Pièce",w:30},{l:"Dégât / Poste",w:62},{l:"Unité",w:11},{l:"Prix",w:16},
-            {l:"Qté",w:11},{l:"Brut",w:18},{l:"Vét.",w:12},{l:"Locataire",w:18},{l:"Proprio",w:12}];
-  ctx.fillStyle=NV;ctx.fillRect(ML,y-mm(3.5),CW,mm(5.5));
-  ctx.fillStyle="#fff";setF(true,6);
-  var xx=ML;cols.forEach(function(col){ctx.fillText(col.l,xx+mm(0.5),y);xx+=mm(col.w);});
-  y+=mm(4);ctx.fillStyle="#000";
-
-  rows.forEach(function(rd,i){
-    chk(6);
-    if(i%2===0){ctx.fillStyle=LG;ctx.fillRect(ML,y-mm(3),CW,mm(5.5));}
-    ctx.fillStyle="#000";setF(false,6.5);
-    var vp=Math.round((rd._v||0)*100);
-    var cells=[rd.piece||"—",rd.poste||"—",rd.unite||"—",
-      rd.prix!=null?rd.prix.toFixed(2)+"\u20ac":"—",rd.qte!=null?String(rd.qte):"—",
-      rd._b>0?fmtE(rd._b):"—",vp+"%",rd._loc>0?fmtE(rd._loc):"—",rd._pro>0?fmtE(rd._pro):"—"];
-    xx=ML;
-    cols.forEach(function(col,ci){ctx.fillText(fit(cells[ci],mm(col.w-1.5)),xx+mm(0.5),y);xx+=mm(col.w);});
-    y+=mm(5.5);
-  });
-
-  chk(10);
-  ctx.fillStyle=NV;ctx.fillRect(ML,y-mm(2),CW,mm(7));
-  ctx.fillStyle="#fff";setF(true,7.5);ctx.textAlign="left";
-  ctx.fillText("TOTAUX",ML+mm(2),y+mm(3));
-  ctx.textAlign="right";
-  ctx.fillText(fmtE(tB),ML+mm(148),y+mm(3));
-  ctx.fillText(fmtE(tL),ML+mm(178),y+mm(3));
-  ctx.fillText(fmtE(tP),ML+CW-mm(1),y+mm(3));
-  ctx.textAlign="left";y+=mm(11);
-
-  chk(30);secH("Récapitulatif");
-  [["\u00c0 charge du propriétaire (vétusté)",fmtE(tP),LG,"#000"],
-   ["Montant total des travaux",fmtE(tB),"#FEF3C7","#000"],
-   ["\u00c0 RETENIR SUR LA GARANTIE LOCATIVE",fmtE(tL),NV,"#fff"]
-  ].forEach(function(row){
-    ctx.fillStyle=row[2];ctx.fillRect(ML,y-mm(3),CW,mm(7));
-    ctx.fillStyle=row[3];setF(false,8);ctx.fillText(row[0],ML+mm(3),y+mm(1.5));
-    ctx.textAlign="right";setF(true,8);ctx.fillText(row[1],ML+CW-mm(2),y+mm(1.5));
-    ctx.textAlign="left";y+=mm(8);
-  });y+=mm(4);
-
-  if(obs.trim()){
-    chk(20);secH("Observations");
-    setF(false,8);ctx.fillStyle="#000";
-    var words=obs.split(" "),line="";
-    words.forEach(function(w){
-      var t=line?line+" "+w:w;
-      if(ctx.measureText(t).width>CW-mm(6)){chk(6);ctx.fillText(line,ML+mm(2),y);y+=mm(5);line=w;}
-      else line=t;
-    });
-    if(line){chk(6);ctx.fillText(line,ML+mm(2),y);y+=mm(5);}
-    y+=mm(4);
-  }
-
-  chk(48);secH("Signatures — Lu et approuvé");
-  var sw=(190-8)/3,sx=10;
-  [["loc","Locataire"],["pro","Propriétaire ou mandataire"],["exp","Agent / Expert"]].forEach(function(pair){
-    var k=pair[0],lbl=pair[1];
-    ctx.strokeStyle=GR;ctx.lineWidth=mm(0.3);ctx.strokeRect(mm(sx),y,mm(sw),mm(34));
-    ctx.fillStyle=NV;setF(true,7);ctx.textAlign="center";
-    ctx.fillText(lbl,mm(sx+sw/2),y+mm(6));
-    ctx.fillStyle=GR;setF(false,6.5);ctx.fillText("Lu et approuvé",mm(sx+sw/2),y+mm(11));
-    if(sigs[k]){
-      (function(sigK,x,yy,w){
-        var img=new Image();img.src=sigs[sigK];
-        if(img.complete)ctx.drawImage(img,mm(x+2),yy+mm(12),mm(w-4),mm(20));
-        else img.onload=function(){ctx.drawImage(img,mm(x+2),yy+mm(12),mm(w-4),mm(20));};
-      })(k,sx,y,sw);
-    }
-    ctx.textAlign="left";sx+=sw+4;
-  });
-  y+=mm(38);
-
-  chk(8);ctx.fillStyle=GR;setF(false,8);
-  ctx.fillText("Fait à "+lieu+", le "+new Date().toLocaleDateString("fr-BE"),ML,y);
+function newPage(){
   drawFtr(ctx,pgN);
-  return pages;
+  cur=mkC();ctx=cur.ctx;pages.push(cur.c);pgN++;y=mm(18);
+}
+function chk(n){if(y+mm(n)>H-mm(14))newPage();}
+function setF(bold,sz){ctx.font=(bold?"700 ":"400 ")+mm(sz)+"px Arial,sans-serif";}
+function fit(txt,maxPx){
+  var t=String(txt||"—");
+  while(ctx.measureText(t).width>maxPx&&t.length>3)t=t.slice(0,-1)+"…";
+  return t;
+}
+function wrapLines(txt,maxPx){
+  var words=String(txt||"").split(" "),lines=[],line="";
+  words.forEach(function(w){
+    var t=line?line+" "+w:w;
+    if(ctx.measureText(t).width>maxPx&&line){lines.push(line);line=w;}
+    else line=t;
+  });
+  if(line)lines.push(line);
+  return lines;
+}
+function drawFtr(c2,n){
+  c2.fillStyle=NV;c2.fillRect(0,H-mm(10),W,mm(10));
+  c2.fillStyle="#fff";c2.font="400 "+mm(6.5)+"px Arial,sans-serif";
+  c2.textAlign="left";c2.fillText("FMP Immo srl — IPI 513.312 — Dégâts Locatifs",ML,H-mm(3.5));
+  c2.textAlign="right";c2.fillText("Page "+n,W-ML,H-mm(3.5));c2.textAlign="left";
+}
+function secH(t){
+  chk(12);y+=mm(3);
+  ctx.fillStyle=NV;ctx.fillRect(ML,y,CW,mm(8));
+  ctx.fillStyle="#fff";setF(true,7);ctx.textAlign="left";
+  ctx.fillText(t.toUpperCase(),ML+mm(3),y+mm(5.5));ctx.fillStyle="#000";
+  y+=mm(8)+mm(6);
+}
+function fld(lbl,val,x,fy,w){
+  ctx.fillStyle=GR;setF(false,6.5);ctx.fillText(lbl,x,fy);
+  ctx.fillStyle="#000";setF(true,9);ctx.fillText(fit(val,mm(w-2)),x,fy+mm(5.5));
+}
+
+// Header band
+ctx.fillStyle=NV;ctx.fillRect(0,0,W,mm(28));
+ctx.fillStyle="#fff";ctx.textAlign="center";setF(true,13);
+ctx.fillText("Dégâts Locatifs",W/2,mm(15));
+setF(false,7);ctx.fillText("FMP Immo srl — IPI 513.312",W/2,mm(23));
+ctx.textAlign="left";y=mm(36);
+
+secH("Bien immobilier");
+fld("adresse du bien",addr,ML,y,190);y+=mm(13);
+
+secH("Parties");
+fld("bailleur / propriétaire",bail,ML,y,95);fld("mandataire",mand,ML+mm(97),y,93);y+=mm(13);
+fld("locataire(s)",loca,ML,y,95);fld("agent / expert",xprt,ML+mm(97),y,93);y+=mm(13);
+
+secH("Période");
+fld("date entrée",ent,ML,y,60);
+fld("date sortie",sor,ML+mm(63),y,60);
+fld("durée d\u2019occupation",duree+" an"+(duree>1?"s":""),ML+mm(129),y,60);
+y+=mm(15);
+
+secH("Détail des dégâts constatés");
+var cols=[{l:"Pièce",w:24},{l:"Dégât / poste",w:56},{l:"Unité",w:14},{l:"Prix",w:16},
+          {l:"Qté",w:12},{l:"Brut",w:20},{l:"Vét.",w:14},{l:"Locataire",w:22},{l:"Proprio",w:12}];
+ctx.fillStyle=NV;ctx.fillRect(ML,y,CW,mm(7));
+ctx.fillStyle="#fff";setF(true,5.8);
+var xx=ML;cols.forEach(function(col){ctx.fillText(fit(col.l,mm(col.w-1.5)),xx+mm(1),y+mm(4.8));xx+=mm(col.w);});
+y+=mm(11);ctx.fillStyle="#000";
+
+rows.forEach(function(rd,i){
+  chk(8);
+  if(i%2===0){ctx.fillStyle=LG;ctx.fillRect(ML,y-mm(1),CW,mm(7.5));}
+  ctx.fillStyle="#000";setF(false,6.5);
+  var vp=Math.round((rd._v||0)*100);
+  var cells=[rd.piece||"—",rd.poste||"—",rd.unite||"—",
+    rd.prix!=null?rd.prix.toFixed(2)+"\u20ac":"—",rd.qte!=null?String(rd.qte):"—",
+    rd._b>0?fmtE(rd._b):"—",vp+"%",rd._loc>0?fmtE(rd._loc):"—",rd._pro>0?fmtE(rd._pro):"—"];
+  xx=ML;
+  cols.forEach(function(col,ci){ctx.fillText(fit(cells[ci],mm(col.w-1.5)),xx+mm(1),y+mm(4.5));xx+=mm(col.w);});
+  y+=mm(7.5);
+});
+y+=mm(3);
+
+chk(12);
+ctx.fillStyle=NV;ctx.fillRect(ML,y,CW,mm(9));
+ctx.fillStyle="#fff";setF(true,7.5);ctx.textAlign="left";
+ctx.fillText("TOTAUX",ML+mm(3),y+mm(6));
+ctx.textAlign="right";
+ctx.fillText(fmtE(tB),ML+mm(146),y+mm(6));
+ctx.fillText(fmtE(tL),ML+mm(176),y+mm(6));
+ctx.fillText(fmtE(tP),ML+CW-mm(2),y+mm(6));
+ctx.textAlign="left";y+=mm(9)+mm(8);
+
+secH("Récapitulatif");
+[["\u00c0 charge du propriétaire (vétusté)",fmtE(tP),LG,"#000"],
+ ["Montant total des travaux",fmtE(tB),"#FEF3C7","#000"],
+ ["\u00c0 RETENIR SUR LA GARANTIE LOCATIVE",fmtE(tL),NV,"#fff"]
+].forEach(function(row){
+  chk(10);
+  ctx.fillStyle=row[2];ctx.fillRect(ML,y,CW,mm(9));
+  ctx.fillStyle=row[3];setF(false,8);ctx.fillText(row[0],ML+mm(3),y+mm(6));
+  ctx.textAlign="right";setF(true,8.5);ctx.fillText(row[1],ML+CW-mm(3),y+mm(6));
+  ctx.textAlign="left";y+=mm(9)+mm(2);
+});y+=mm(6);
+
+if(obs.trim()){
+  chk(20);secH("Observations");
+  setF(false,8);ctx.fillStyle="#000";
+  var lines=wrapLines(obs,CW-mm(6));
+  lines.forEach(function(line){chk(7);ctx.fillText(line,ML+mm(3),y+mm(2));y+=mm(6.5);});
+  y+=mm(6);
+}
+
+chk(56);secH("Signatures — Lu et approuvé");
+var sw=(190-8)/3,sx=10,boxH=40;
+[["loc","Locataire"],["pro","Propriétaire ou mandataire"],["exp","Agent / Expert"]].forEach(function(pair){
+  var k=pair[0],lbl=pair[1];
+  ctx.strokeStyle=GR;ctx.lineWidth=mm(0.3);ctx.strokeRect(mm(sx),y,mm(sw),mm(boxH));
+  ctx.fillStyle=NV;setF(true,6.3);ctx.textAlign="center";
+  var lblLines=wrapLines(lbl,mm(sw-6));
+  var ly=y+mm(6);
+  lblLines.forEach(function(l){ctx.fillText(l,mm(sx+sw/2),ly);ly+=mm(5);});
+  ctx.fillStyle=GR;setF(false,6);
+  ctx.fillText("Lu et approuvé",mm(sx+sw/2),ly+mm(2));
+  if(sigs[k]){
+    (function(sigK,x,yy,w){
+      var img=new Image();img.src=sigs[sigK];
+      var drawY=yy+mm(16);
+      if(img.complete)ctx.drawImage(img,mm(x+2),drawY,mm(w-4),mm(20));
+      else img.onload=function(){ctx.drawImage(img,mm(x+2),drawY,mm(w-4),mm(20));};
+    })(k,sx,y,sw);
+  }
+  ctx.textAlign="left";sx+=sw+4;
+});
+y+=mm(boxH+6);
+
+chk(10);ctx.fillStyle=GR;setF(false,8);
+ctx.fillText("Fait à "+lieu+", le "+new Date().toLocaleDateString("fr-BE"),ML,y);
+drawFtr(ctx,pgN);
+return pages;
 }
 
 function prepareMail(){
-  var el=document.getElementById("em-loc").value;
-  var ep=document.getElementById("em-pro").value;
-  var to=[el,ep].filter(Boolean).join(",");
-  var addr=document.getElementById("adresse").value||"le bien";
-  var subj=encodeURIComponent("Dégâts Locatifs – "+addr);
-  var body=encodeURIComponent("Bonjour,\n\nVeuillez trouver ci-joint le document de dégâts locatifs concernant :\n"+addr+"\n\nCordialement,\nFMP Immo srl");
-  var href="mailto:"+to+"?subject="+subj+"&body="+body;
-  var wrap=document.getElementById("mail-wrap");
-  wrap.style.display="block";
-  wrap.innerHTML='<div style="font-size:13px;color:#065F46;margin-bottom:10px;font-weight:600">Appuyez sur le lien pour ouvrir votre application mail :</div>'+
-    '<a href="'+href+'" style="display:inline-block;background:#1A7A4A;color:white;padding:13px 24px;border-radius:8px;font-weight:700;font-size:15px;text-decoration:none">✉️ Ouvrir Mail'+(to?" — "+to:"")+"</a>"+
-    '<div style="margin-top:8px;font-size:11px;color:#6B7280">Enregistrez le document depuis votre galerie pour le joindre au mail.</div>';
+var el=document.getElementById("em-loc").value;
+var ep=document.getElementById("em-pro").value;
+var to=[el,ep].filter(Boolean).join(",");
+var addr=document.getElementById("adresse").value||"le bien";
+var subj=encodeURIComponent("Dégâts Locatifs – "+addr);
+var body=encodeURIComponent("Bonjour,\n\nVeuillez trouver ci-joint le document de dégâts locatifs concernant :\n"+addr+"\n\nCordialement,\nFMP Immo srl");
+var href="mailto:"+to+"?subject="+subj+"&body="+body;
+var wrap=document.getElementById("mail-wrap");
+wrap.style.display="block";
+wrap.innerHTML='<div style="font-size:13px;color:#065F46;margin-bottom:10px;font-weight:600">Appuyez sur le lien pour ouvrir votre application mail :</div>'+
+  '<a href="'+href+'" style="display:inline-block;background:#1A7A4A;color:white;padding:13px 24px;border-radius:8px;font-weight:700;font-size:15px;text-decoration:none">✉️ Ouvrir Mail'+(to?" — "+to:"")+"</a>"+
+  '<div style="margin-top:8px;font-size:11px;color:#6B7280">Enregistrez le document depuis votre galerie pour le joindre au mail.</div>';
 }
 
 document.getElementById("edit-mov").addEventListener("click",function(e){if(e.target===e.currentTarget)closeEdit();});
