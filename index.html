@@ -659,9 +659,15 @@ function newPage(){
 function chk(n){if(y+mm(n)>H-mm(14))newPage();}
 function setF(bold,sz){ctx.font=(bold?"700 ":"400 ")+mm(sz)+"px Arial,sans-serif";}
 function fit(txt,maxPx){
-  var t=String(txt||"—");
-  while(ctx.measureText(t).width>maxPx&&t.length>3)t=t.slice(0,-1)+"…";
-  return t;
+  var full=(txt===undefined||txt===null||txt==="")?"—":String(txt);
+  if(ctx.measureText(full).width<=maxPx)return full;
+  var lo=0,hi=full.length;
+  while(lo<hi){
+    var mid=Math.ceil((lo+hi)/2);
+    var cand=full.slice(0,mid)+"…";
+    if(ctx.measureText(cand).width<=maxPx)lo=mid;else hi=mid-1;
+  }
+  return lo<=0?"…":full.slice(0,lo)+"…";
 }
 function wrapLines(txt,maxPx){
   var words=String(txt||"").split(" "),lines=[],line="";
